@@ -13,6 +13,7 @@ import { CallNumber } from '@ionic-native/call-number';
 export class NextpagePage {
 
   REG_FLAG: boolean;
+  STAR_FLAG: boolean;
   
   bus_slot_no: number;
   bus_stop_no: number;
@@ -31,6 +32,7 @@ export class NextpagePage {
   constructor(public navCtrl: NavController, public alerCtrl: AlertController, public toastCtrl: ToastController, private call: CallNumber, public navParams: NavParams, public viewCtrl : ViewController) 
   { 
       this.REG_FLAG = false;
+      this.STAR_FLAG = false;
       this.bus_slot = "Morning: 7am";
       this.bus_stop = "Seepz";
       this.charges = 80;
@@ -163,14 +165,18 @@ export class NextpagePage {
       this.bus_stop = "Seepz Bus Station";
     }
 
+    var call = document.getElementById('call-button');
     this.trip_type = this.navParams.get('trip_type');
     if(this.trip_type == 1)
     {
       this.charges = 85;
+      this.STAR_FLAG = true;
     }
     else if(this.trip_type == 2)
     {
       this.charges = 2400;
+      this.STAR_FLAG = false;
+      call.classList.add("call-button-alone");
     }
 
     //console.log(this.bus_stop);
