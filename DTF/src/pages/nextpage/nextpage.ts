@@ -18,9 +18,11 @@ export class NextpagePage {
   bus_slot_no: number;
   bus_stop_no: number;
   trip_type: number;
+  full_date: string;
 
   bus_slot: string;
   bus_stop: string;
+  date: number;
   charges: number;
   timing: string;
   
@@ -33,6 +35,7 @@ export class NextpagePage {
   { 
       this.REG_FLAG = false;
       this.STAR_FLAG = false;
+
       this.bus_slot = "Morning: 7am";
       this.bus_stop = "Seepz";
       this.charges = 80;
@@ -181,6 +184,8 @@ export class NextpagePage {
       call.classList.add("call-button-alone");
     }
 
+    this.date = this.navParams.get('date');
+    this.full_date = this.date + "/" + ((new Date().getUTCMonth())+1) + "/" + (new Date().getFullYear());
     //console.log(this.bus_stop);
 
   }

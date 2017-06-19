@@ -43,10 +43,50 @@ export class HomePage {
       bus_slot: 123,
       bp: 456,
       dp: 789,
+      date: 0,
       trip_type: 1
     }
   }
 
+  dateSelect(n)
+  {
+    var date1 = document.getElementById('date1');
+    var date2 = document.getElementById('date2');
+    var date3 = document.getElementById('date3');
+    if(n==1)
+    {
+      date1.style.backgroundColor = "black";
+      date1.style.color = "white";
+
+      date2.style.backgroundColor = "white";
+      date2.style.color = "black";
+      date3.style.backgroundColor = "white";
+      date3.style.color = "black";
+    }
+    else if(n==2)
+    {
+      date2.style.backgroundColor = "black";
+      date2.style.color = "white";
+
+      date1.style.backgroundColor = "white";
+      date1.style.color = "black";
+      date3.style.backgroundColor = "white";
+      date3.style.color = "black";
+    }
+    else if(n==3)
+    {
+      date3.style.backgroundColor = "black";
+      date3.style.color = "white";
+
+      date1.style.backgroundColor = "white";
+      date1.style.color = "black";
+      date2.style.backgroundColor = "white";
+      date2.style.color = "black";
+    }
+
+    this.data.date = (new Date().getUTCDate()) + n - 1;
+  }
+  
   testFn() {
     console.log(this.data);
   }
@@ -62,6 +102,7 @@ interface data {
     bus_slot: number;
     bp: number;
     dp: number;
+    date: number;
     trip_type: number;
 }
 
