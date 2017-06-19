@@ -77,7 +77,8 @@ export class NextpagePage {
               });
               toast.present(toast);
               reg.innerHTML = "Cancel registration";
-              reg.style.backgroundColor = "#f53d3d"
+              reg.style.backgroundColor = "#f53d3d",
+              reg.style.width = "75%"
               this.REG_FLAG = true;
             }
             else
