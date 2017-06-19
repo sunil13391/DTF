@@ -27,6 +27,11 @@ export class HomePage {
     var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"]
     return names[new Date().getUTCMonth()];
   }
+  // get year()
+  // {
+  //   return new Date().getUTCFullYear();
+  // }
+  
 
    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public toastCtrl: ToastController) {
   

@@ -35,7 +35,7 @@
   <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Location</ion-label>
-    <ion-select interface="popover" [(ngModel)]="data.location">
+    <ion-select interface="popover" [(ngModel)]="data.location"  ng-model="yourModel" ng-change="function(yourModel)">   
       <ion-option value="Mahape">Mahape</ion-option>
       <ion-option value="Pune">Pune</ion-option>
       <ion-option value="Seepz">Seepz</ion-option>
@@ -83,18 +83,19 @@
     </ion-select>
   </ion-item>
 </ion-list>
-<div align="center">
-  <p>
-    <button ion-button color="primary" class="app_buttons" (click)="pushFn()">Next</button>
-  </p></div>
+
 
 <div id="utilities" align="center">
     <button ion-button round icon-left id="call-button" (click)="callNumber()">
-    <ion-icon name="call"></ion-icon>   Call the <br> bus administrator
-    </button>
+    <ion-icon name="call"></ion-icon>
+      Call the bus <br>  administrator
+    </button> 
+ <p>
+    <button ion-button color="primary" class="app_buttons" (click)="pushFn()" style = "float:right; width:35%; height: 50px">Next</button>
+  </p>
 </div>
 <!--
-!--<h3>Posts</h3>  
+<h3>Posts</h3>  
     <ion-label style="color: #000000">Boarding Point</ion-label>
    <ion-list>
   <ion-item style = "background-color:transparent">
@@ -108,39 +109,4 @@
   </ion-item>
 </ion-list>
     -->
-
-<!--<script>
-var app = angular.module('selectboxApp', []);
-app.controller('selectboxCtrl', function ($scope) {
-$scope.arrlist = [{
-"userid": 1,
-"name": "Mahape"
-}, {
-"userid": 2,
-"name": "Pune"
-}, {
-"userid": 3,
-"name": "Seepz"
-}];
-$scope.checkselection = function () {
-if ($scope.userSelect != "" && $scope.userSelect != undefined)
-$scope.msg = 'Selected Value: '+$scope.userSelect;
-else
-$scope.msg = 'Please Select Dropdown Value';
-}
-});
-</script>
-
-<body  ng-app="selectboxApp" ng-controller="selectboxCtrl">
-<div>
-<h3>AngularJS Select Box / Dropdown List Validation Example</h3>
-<select name="users" ng-model="userSelect">
-<option value="">--Select User--</option>
-<option ng-repeat="option in arrlist" value="{{option.userid}}">{{option.name}}</option>
-</select>
-</div><br /><br />
-<input type="button" value="Submit" ng-click="checkselection()" /><br /><br />
-<span style="color:red">{{msg}}</span><br />
-</body>-->
-
 </ion-content>

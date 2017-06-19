@@ -75,7 +75,8 @@ export class NextpagePage {
               let toast = this.toastCtrl.create({
                 message: 'You have registered successfully',
                 duration: 2000,
-                position: 'middle'
+                position: 'middle',
+                cssClass: "ClassName"
               });
               toast.present(toast);
               reg.innerHTML = "Cancel registration";
