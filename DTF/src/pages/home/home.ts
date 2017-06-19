@@ -24,7 +24,7 @@ export class HomePage {
   
   get month()
   {
-    var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"]
+    var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
     return names[new Date().getUTCMonth()];
   }
   // get year()
