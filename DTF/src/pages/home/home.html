@@ -12,9 +12,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
-<ion-icon [name]="myIcon"></ion-icon>
   <h3 style="text-align: center">Single Trip</h3>
-<div  >
 <ion-card>
   <!--<ion-card-header>
     <ion-label></ion-label></ion-card-header>-->
@@ -25,13 +23,13 @@
   </ion-row>
 
 <ion-row> 
-<button ion-button color="dark" clear class="col text-center" col-4  style="font-size:150%;">{{dates}}</button>
-<button  ion-button color="dark" clear class="col text-center" col-4  style="font-size:150%;">{{dates+1}}</button>
-<button  ion-button color="dark" clear class="col text-center" col-4 style="font-size:150%;">{{dates+2}}</button>
+  <button ion-button color="dark" clear class="col date-select-buttons" col-4  style="font-size:150%;">{{dates}}</button>
+  <button  ion-button color="dark" clear class="col date-select-buttons" col-4  style="font-size:150%;">{{dates+1}}</button>
+  <button  ion-button color="dark" clear class="col date-select-buttons" col-4 style="font-size:150%;">{{dates+2}}</button>
 </ion-row>
 </ion-grid>
 </ion-card-content>
-</ion-card></div>
+</ion-card>
 
  
   <ion-list no-lines>

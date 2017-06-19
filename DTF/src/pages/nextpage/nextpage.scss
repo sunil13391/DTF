@@ -27,6 +27,12 @@ page-nextpage {
         border: 1px solid lightgreen;
     }
 
+    #call-button.call-button-alone
+    {
+        display: block;
+        margin: auto;
+    }
+
     #service-card-main
     {
         width: 50%;

@@ -36,11 +36,11 @@
     <ion-icon name="call"></ion-icon>Call the <br> coordinator
     </button>
 
-    <ion-card id="service-card-main" color="primary">
+    <ion-card id="service-card-main" color="primary" *ngIf="STAR_FLAG">
     <ion-card-header id="service-card-head">
       Services remaining:
     </ion-card-header>
-    <ion-card-content id="service-card-stars" ng-repeat="i in getNumber(3) track by $index">
+    <ion-card-content id="service-card-stars">
       <ion-icon *ngFor="let star of full_stars" name="star" class="filled-star"></ion-icon>
       <ion-icon *ngFor="let star of empty_stars" name="star-outline" class="empty-star"></ion-icon>
     </ion-card-content>
