@@ -3,16 +3,131 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Bus Registration</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
+<ion-content padding class="back">
+
+
+<ion-icon [name]="myIcon"></ion-icon>
+  <h3 style="text-align: center">Single Trip</h3>
+<div  >
+<ion-card>
+  <ion-card-header>
+    <ion-label>Booking Date</ion-label></ion-card-header>
+<ion-card-content>
+<ion-grid text-center>  
+  <ion-row>
+<ion-col col-12 style="font-size:200%;">{{month}}</ion-col>
+  </ion-row>
+
+<ion-row> 
+<button ion-button color="dark" clear class="col text-center" col-4  style="font-size:150%;">{{dates}}</button>
+<button  ion-button color="dark" clear class="col text-center" col-4  style="font-size:150%;">{{dates+1}}</button>
+<button  ion-button color="dark" clear class="col text-center" col-4 style="font-size:150%;">{{dates+2}}</button>
+</ion-row>
+</ion-grid>
+</ion-card-content>
+</ion-card></div>
+
+  
+  <ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Location</ion-label>
+    <ion-select interface="popover" [(ngModel)]="data.location">
+      <ion-option value="Mahape">Mahape</ion-option>
+      <ion-option value="Pune">Pune</ion-option>
+      <ion-option value="Seepz">Seepz</ion-option>
+      
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+ <ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Bus Slot</ion-label>
+    <ion-select  interface="popover" [(ngModel)]="data.bus_slot">
+      <ion-option value="1">Morning/8:30AM</ion-option>
+      <ion-option value="2">Morning/10:00AM</ion-option>
+      <ion-option value="3">Evening/5:45PM</ion-option>
+      <ion-option value="4">Evening/7:10PM</ion-option>
+      <ion-option value="5">Evening/8:30PM</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Boarding Point</ion-label>
+    <ion-select  interface="popover" [(ngModel)]="data.bp">
+      <ion-option value="1">Ghatkopar</ion-option>
+      <ion-option value="2">Vikhroli</ion-option>
+      <ion-option value="3">Kandivali</ion-option>
+      <ion-option value="4">Bhandup</ion-option>
+      <ion-option value="5">Andheri</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Drop Point</ion-label>
+    <ion-select  interface="popover" [(ngModel)]="data.dp">
+      <ion-option value="1">Mahape</ion-option>
+      <!--<ion-option value="">Morning/10:00AM</ion-option>
+      <ion-option value="">Evening/5:45PM</ion-option>
+      <ion-option value="">Evening/7:10PM</ion-option>
+      <ion-option value="">Evening/8:30PM</ion-option>-->
+    </ion-select>
+  </ion-item>
+</ion-list>
+<div align="center">
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <button ion-button color="primary" class="app_buttons" (click)="pushFn()">Register</button>
+  </p></div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+
+<!--
+  <button  ion-button (click)="testFn()">Test</button>
+
+<ion-icon class="icon menu-icon ion-home" name="call"></ion-icon>-->
+
+<!--&nbsp;&nbsp;&nbsp;&nbsp;
+ <p>
+ 
+&nbsp;
+  Call the coordinator
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>
+<ion-icon name="star-outline"></ion-icon>
+<ion-icon name="star-outline"></ion-icon>
+<!--<ion-icon name="star"></ion-icon>
+<ion-icon name="star"></ion-icon>-->
+ <!--Single Trips Left
+</p>-->
+<!--<h3 >Posts</h3>  <div *ngFor = "let post of posts">
+  <h3>{{post.id}} </h3>
+   <p>{{post.title}}</p>
+   </div>-->
+  
+  
+   <!--<h3>Posts</h3>  
+    <ion-label style="color: #000000">Boarding Point</ion-label>
+   <ion-list>
+  <ion-item style = "background-color:transparent">
+    <ion-select  >
+       <ion-option value="">Mulund</ion-option>
+    
+      <!--<ion-option value="{{post.id}}">{{post.title}}</ion-option>-->
+      <!--<ion-option value="">Bhandup</ion-option>
+      <ion-option value="">Andheri</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+    -->
+
 </ion-content>

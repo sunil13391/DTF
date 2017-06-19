@@ -1,0 +1,65 @@
+page-nextpage {
+
+    
+    
+    .complete-page {
+        background: linear-gradient(to bottom, #40C4FF 0%, #015798 100%);
+    }
+    
+    #form-display
+    {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    #utilities
+    {
+        margin-bottom: 20px;
+    }
+
+    #call-button
+    {
+        width: 42%;
+        font-size: smaller;
+        margin: 0;
+        height: 50px;
+        background-color: #2874A6;
+        border: 1px solid lightgreen;
+    }
+
+    #service-card-main
+    {
+        width: 50%;
+        float: right;
+        margin: 0;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #2874A6;
+        border: 1px solid lightgreen;
+    }
+
+    #service-card-head
+    {
+        font-size: smaller;
+        padding: 2px;
+        padding-top: 7px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #service-card-stars
+    {
+        padding: 2px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .filled-star {
+        color: red;
+        @include stroke(1, black);
+    }
+    
+    .empty-star {
+        color: white;
+    }
+}

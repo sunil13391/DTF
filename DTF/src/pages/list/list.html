@@ -3,21 +3,84 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Bus Registration</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+
+<ion-content padding class="back"> 
+
+ <!--<ion-icon name="arrow-forward"></ion-icon>-->
+<ion-icon [name]="myIcon"></ion-icon>
+ <h3 style="text-align: center">Monthly Trip</h3>
+<!--<ion-icon name="bus"></ion-icon>&nbsp;-->
+
+  
+  <ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Location</ion-label>
+    <ion-select interface="popover" [(ngModel)]="data.location">
+      <ion-option value="Mahape">Mahape</ion-option>
+      <ion-option value="Pune">Pune</ion-option>
+      <ion-option value="Seepz">Seepz</ion-option>
+      
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+ <ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Bus Slot</ion-label>
+    <ion-select  interface="popover" [(ngModel)]="data.bus_slot">
+      <ion-option value="1">Morning/8:30AM</ion-option>
+      <ion-option value="2">Morning/10:00AM</ion-option>
+      <ion-option value="3">Evening/5:45PM</ion-option>
+      <ion-option value="4">Evening/7:10PM</ion-option>
+      <ion-option value="5">Evening/8:30PM</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Boarding Point</ion-label>
+    <ion-select  interface="popover" [(ngModel)]="data.bp">
+      <ion-option value="1">Ghatkopar</ion-option>
+      <ion-option value="2">Vikhroli</ion-option>
+      <ion-option value="3">Kandivali</ion-option>
+      <ion-option value="4">Bhandup</ion-option>
+      <ion-option value="5">Andheri</ion-option>
+      <ion-option *ngFor = "let post of posts" value="{{post.id}}">{{post.title}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Drop Point</ion-label>
+    <ion-select  interface="popover" [(ngModel)]="data.dp">
+      <ion-option value="1">Mahape</ion-option>
+      <!--<ion-option value="">Morning/10:00AM</ion-option>
+      <ion-option value="">Evening/5:45PM</ion-option>
+      <ion-option value="">Evening/7:10PM</ion-option>
+      <ion-option value="">Evening/8:30PM</ion-option>-->
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+  <div align="center">
+  <p>
+    <button  ion-button color="primary" class="app_buttons" (click)="pushFn()" style="width:150px;"  >Register</button>
+  </p>
   </div>
+
+<!--<p>
+<ion-icon name="star-outline"></ion-icon>
+<ion-icon name="star-outline"></ion-icon>
+<!--<ion-icon name="star"></ion-icon>
+<ion-icon name="star"></ion-icon>-->
+<!--&nbsp; Free Trips Available
+</p>-->
+
 </ion-content>
