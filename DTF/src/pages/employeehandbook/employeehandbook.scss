@@ -1,0 +1,42 @@
+page-employeehandbook {
+
+.menu{
+     display: flex;
+    justify-content: space-between;
+}
+.super{
+
+  height: 100%;
+  display: block;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+
+  &.tabs-placement-bottom {
+    flex-direction: column-reverse;
+    > super-tabs-toolbar {
+      > ion-toolbar.toolbar {
+        padding: 0;
+        .tab-buttons-container {
+          .indicator {
+            top: 0;
+            bottom: auto;
+            
+          }
+          ion-segment.segment.segment-md {
+            padding-top: 4px;
+          }
+        }
+
+        &.scroll-tabs {
+          .tab-buttons-container .indicator {
+            margin-top: 0;
+            margin-bottom: -2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+}

@@ -1,0 +1,24 @@
+<!--
+  Generated template for the EmployeehandbookPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Employee handbook</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color: #d3dcea;">
+<super-tabs   class="super" id="mainTabs" selectedTabIndex="0" toolbarColor="light" toolbarBackground="#0D47A1" indicatorColor="light" badgeColor="light" 
+[config]="{ sideMenu: 'left' }" (tabSelect)="onTabSelect($event)" tabsPlacement="bottom">
+  <super-tab  [root]="page1"  icon="information-circle" id="homeTab" ></super-tab>
+  <super-tab  [root]="page2" icon="call" id="locationTab"></super-tab>
+  <super-tab  [root]="page3"  icon="calendar" id="favouritesTab"></super-tab>
+  <super-tab  [root]="page4" icon="contacts"></super-tab>
+</super-tabs>
+</ion-content>

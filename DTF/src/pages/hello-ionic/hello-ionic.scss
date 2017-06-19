@@ -1,0 +1,56 @@
+page-hello-ionic {
+
+
+.navbar{
+    background:"#0D47A1"
+}
+#box {
+     
+   
+    
+    border-radius: 8px;
+   
+    box-shadow: 0 8px 0 #64B5F6, 0 15px 20px rgba(0, 0, 0, .35);
+    
+   
+    font-size: 12px;
+  white-space: normal;
+  transition: box-shadow .1s ease-in-out;
+   
+}
+
+
+.search{ background:white;}
+.myevent{ background:white;}
+.upcomming{ background:white;}
+.trainer{background:white;}
+.other{ background:white;}
+.wishlist{ background:#edf1f7;}
+.grid ion-row {
+  margin: 10px;
+  height: 30%;
+  padding: 7px;
+  flex-wrap: wrap;
+ 
+  
+}
+.title{
+	color: white;
+}
+
+.grid ion-col {
+  border-top: 20px;
+  text-align: center;
+  color: #0D47A1;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  
+  }
+}
+ion-icon{
+  font-size: 40px;
+  margin: 10px;
+
+}
+  
+.item{
+  text-decoration: none !important;}

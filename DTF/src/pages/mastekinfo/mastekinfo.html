@@ -1,0 +1,174 @@
+<!--
+  Generated template for the MastekinfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding style="background-color: #d3dcea;">
+ 
+    
+<h1 align="center"> Mastek Values</h1>
+ <!--<ion-card id="icard" color="white">
+ <ion-card-content style="font-size:10px;">
+    <ion-card-title >
+     <h2 class="head">Our Ideals : Building an Evergreen Institution</h2>
+      </ion-card-title>
+    <p>
+      Our aspiration is for Mastek to be an admired, evergreen institution, not just a successful company.
+       We believe that every organisation needs ideals to aspire to – ideals that stand the test of time.
+    </p>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Evergreen Institution</h2>
+      </ion-card-title>
+    <p>
+     Mastek is not just a company, but an institution with a ‘soul’, seeking to make a valuable
+      difference in the world. Mastek believes that sustained contribution and
+      a spotless reputation over the long term are more important than short-term growth and profits.
+    </p>
+  </ion-card-content>
+  </ion-card >
+
+<ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title >
+     <h2 class="head">100% Responsibility for Outcomes</h2>
+      </ion-card-title>
+    <p>
+     Mastek takes 100% responsibility for providing insightful solutions. 
+     Using modern platforms that enhance agility and responsiveness we quickly assimilate new
+      technologies and take pride in our work – underpinning the solutions we deliver.
+    </p>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Win for All</h2>
+      </ion-card-title>
+    <p>
+      Mastek is committed to the success of every stakeholder, without trading off anyone’s 
+      interest against one another. We’re committed to building long-term relationships that win the
+       hearts and minds of those it touches.
+    </p>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-card id="icard">
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Collaborative Culture</h2>
+      </ion-card-title>
+    <p>
+     Mastek embraces collaboration as the means to solving complex problems. 
+     Openness, mutual respect and teamwork within both the company and clients.
+      Collaboration is enhanced with our simple, sincere and straightforward approach to work and relationships.
+    </p>
+  </ion-card-content>
+  </ion-card> 
+<h1>VISSION MISSION</h1>
+ <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Strong Financial Performance</h2>
+      </ion-card-title>
+    <p>
+    Sustainable Revenue & Earnings 
+    </p>
+  </ion-card-content>
+  </ion-card>  
+
+  <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Customer Advocacy</h2>
+      </ion-card-title>
+    <p>
+    100% of customers are wowed by Mastek
+    </p>
+  </ion-card-content>
+  </ion-card> 
+
+   <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Mastek Talent</h2>
+      </ion-card-title>
+    <p>
+   Engaged Mastekeers
+    </p>
+  </ion-card-content>
+  </ion-card> 
+
+  <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Engineering Excellence</h2>
+      </ion-card-title>
+    <p>
+   Innovation, Quality, Predictability
+    </p>
+  </ion-card-content>
+  </ion-card> 
+
+  <ion-card id="icard">
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Agile Leadership</h2>
+      </ion-card-title>
+    <p>
+   Role model in Enterprise Agility
+    </p>
+  </ion-card-content>
+  </ion-card>  
+
+  <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Brand Reputation</h2>
+      </ion-card-title>
+    <p>
+Respected & Trusted
+    </p>
+  </ion-card-content>
+  </ion-card> 
+
+  <ion-card id="icard" >
+  <ion-card-content>
+    <ion-card-title>
+     <h2 class="head">Growth Rates</h2>
+      </ion-card-title>
+    <p>
+Industry x1.5
+    </p>
+  </ion-card-content>
+  </ion-card> -->
+
+   <ion-list>
+    <ion-item *ngFor="let d of values; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <h3>
+        {{d.title}}
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h3>
+      <div *ngIf="isGroupShown(i)">{{d.description}}</div>
+    </ion-item>
+  </ion-list>
+  <h1>Mission Vission</h1>
+  <ion-list>
+    <ion-item *ngFor="let d of vission; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <h3>
+        {{d.title}}
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h3>
+      <div *ngIf="isGroupShown(i)">{{d.description}}</div>
+    </ion-item>
+  </ion-list>
+</ion-content>

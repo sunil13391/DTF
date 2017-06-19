@@ -1,0 +1,16 @@
+{
+    "people":[
+      {
+          "Name": "Deepika Reddy",
+          "Email": "Deepika.Reddy@mastek.com",
+          "Ext": "4670",
+          "Phone": "null"
+        },
+        {
+          "Name": "Khushbu Srivastava",
+          "Email": "Khushbu.Shrivastava@mastek.com",
+          "Ext": "4707",
+          "Phone": null
+        }]
+}
+  

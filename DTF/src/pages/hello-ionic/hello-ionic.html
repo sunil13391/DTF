@@ -1,0 +1,97 @@
+<ion-header>
+  <div style="margin:10px 20px 0px 0px;">
+  <ion-fab  left top>
+    <button ion-fab mini color="#045fe8"><ion-icon name="arrow-dropdown"></ion-icon></button>
+    <ion-fab-list side="bottom" >
+     <a class="item" href="#" onclick="window.open('https://www.facebook.com/Mastekltd/', '_system', 'location=yes'); return false;"> 
+     <button color=danger id="fab" ion-fab id="link"><ion-icon name="logo-facebook"></ion-icon></button></a>
+      
+       <a class="item" href="#" onclick="window.open('https://servicedesk.mastek.com/Servicedesk.WebAccess/ss/Dashboard/OpenHomeDashboard.rails?id=c2492b87-2b72-4068-8983-0e1e2a2e6a15
+
+', '_system', 'location=yes'); return false;"> 
+      <button  color=danger id="fab" ion-fab id="link">TIS</button></a>
+      
+       <a class="item" href="#" onclick="window.open('https://www.yammer.com/mastek.com/', '_system', 'location=yes'); return false;"> 
+      <button color=danger id="fab" ion-fab id="link">Y</button></a>
+
+       <a class="item" href="#" onclick="window.open('https://www.linkedin.com/company/mastek-ltd', '_system', 'location=yes'); return false;"> 
+      <button color=danger id="fab" ion-fab id="link"><ion-icon name="logo-linkedin"></ion-icon></button></a>
+
+       <a class="item" href="#" onclick="window.open('www.mastek.co.in/', '_system', 'location=yes'); return false;"> 
+      <button color=danger id="fab" ion-fab id="link">Mastek</button></a>
+
+     </ion-fab-list>  
+      
+  
+  </ion-fab>
+  </div>
+  <ion-navbar color="blue">
+   <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    
+    <ion-title align="center">Induction</ion-title>
+    
+  </ion-navbar>
+  
+</ion-header>
+
+
+
+  
+   <!-- <button large ion-button block outline  [navPush]="emphand"><span>Employee Handbook</span></button>
+    <button large ion-button block outline ><span>Video Section</span></button>
+    <button large ion-button block outline ><span>Did you know?</span></button>
+    <button large ion-button block outline ><span>Mandatory Training</span></button>
+    <button large ion-button block outline ><span>Floormap</span></button>
+    <button large ion-button block outline ><span>Suggestions & Feedback</span></button> -->
+<ion-content class="grid" style="background-color: #d3dcea;">
+  <ion-row>
+<ion-col class="wishlist" [navPush]="emphand" id="box">
+ <p class="icon">     <ion-icon name="book"></ion-icon></p>
+ 
+      Employee Handbook
+    </ion-col>
+    <ion-col col-1></ion-col>
+    <ion-col class="wishlist"  id="box">
+ <p class="icon">     <ion-icon name="videocam"></ion-icon></p>
+ 
+      Video Section
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="wishlist" id="box">
+ <p class="icon">     <ion-icon name="bulb"></ion-icon></p>
+ 
+      Did You Know ?
+    </ion-col>
+    <ion-col col-1></ion-col>
+ 
+     <ion-col class="wishlist" id="box">
+ <p class="icon">     <ion-icon name="bicycle"></ion-icon></p>
+ 
+     Mandatory Training
+  
+      </ion-col>
+  </ion-row>
+  <ion-row>
+   
+ <ion-col class="wishlist" id="box">
+ <p class="icon">     <ion-icon name="map"></ion-icon></p>
+ 
+     Floormap
+    
+    </ion-col>
+    <ion-col col-1></ion-col>
+
+    
+  <ion-col class="wishlist"  id="box">
+ <p class="icon">     <ion-icon name="paper"></ion-icon></p>
+ 
+      Suggestion & Feedback
+  
+
+    </ion-col>
+  </ion-row>
+    
+</ion-content>
