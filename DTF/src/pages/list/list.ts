@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
+import {  NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
 
 import { NextpagePage } from '..//nextpage/nextpage';
 // import {PeopleServiceProvider} from '../../providers/people-service/people-service';

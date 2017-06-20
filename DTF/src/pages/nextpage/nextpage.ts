@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
 import { ToastController, ViewController } from 'ionic-angular';
@@ -14,6 +14,7 @@ export class NextpagePage {
 
   REG_FLAG: boolean;
   STAR_FLAG: boolean;
+  MONTH_FLAG: boolean;
   
   bus_slot_no: number;
   bus_stop_no: number;
@@ -35,7 +36,8 @@ export class NextpagePage {
   { 
       this.REG_FLAG = false;
       this.STAR_FLAG = false;
-
+      this.MONTH_FLAG = false;
+      
       this.bus_slot = "Morning: 7am";
       this.bus_stop = "Seepz";
       this.charges = 80;
@@ -119,7 +121,7 @@ export class NextpagePage {
 
   ionViewDidLoad() {
     var hrs = 0;
-    var mins = 0;
+    // var mins = 0;
     
     this.bus_slot_no = this.navParams.get('bus_slot');
     if(this.bus_slot_no == 1)

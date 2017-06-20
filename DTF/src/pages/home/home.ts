@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
+import {  NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
 
 import { NextpagePage } from '..//nextpage/nextpage';
 // import {PeopleServiceProvider} from '../../providers/people-service/people-service';
@@ -14,9 +14,18 @@ export class HomePage {
 
   nextpage = NextpagePage;
   data: data;
+  
 //  posts : Post[];
 //  posts1 : Postit[];
 
+ public buttonClicked: boolean = true;
+  
+  public onButtonClick() {
+    this.buttonClicked = !this.buttonClicked;
+  }
+
+
+  
   get dates()
   {
     return new Date().getUTCDate();
