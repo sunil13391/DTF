@@ -19,6 +19,7 @@ export class NextpagePage {
   bus_slot_no: number;
   bus_stop_no: number;
   trip_type: number;
+  period_label: string;
   full_date: string;
 
   bus_slot: string;
@@ -36,8 +37,14 @@ export class NextpagePage {
   { 
       this.REG_FLAG = false;
       this.STAR_FLAG = false;
+<<<<<<< HEAD
       this.MONTH_FLAG = false;
       
+=======
+
+      this.period_label = "Date / Month"
+      this.full_date = "Undefined date";
+>>>>>>> 43427c616461ce6405bbc1481ab73143e6f88032
       this.bus_slot = "Morning: 7am";
       this.bus_stop = "Seepz";
       this.charges = 80;
@@ -174,20 +181,26 @@ export class NextpagePage {
 
     var call = document.getElementById('call-button');
     this.trip_type = this.navParams.get('trip_type');
+    this.date = this.navParams.get('date');
     if(this.trip_type == 1)
     {
       this.charges = 85;
       this.STAR_FLAG = true;
+      this.period_label = "Date";
+      this.full_date = this.date + "/" + ((new Date().getUTCMonth())+1) + "/" + (new Date().getFullYear());
     }
     else if(this.trip_type == 2)
     {
       this.charges = 2400;
       this.STAR_FLAG = false;
+      this.period_label = "Month";
+      var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
+      this.full_date = names[new Date().getUTCMonth()] + " " + (new Date().getFullYear());
       call.classList.add("call-button-alone");
     }
 
-    this.date = this.navParams.get('date');
-    this.full_date = this.date + "/" + ((new Date().getUTCMonth())+1) + "/" + (new Date().getFullYear());
+    
+    
     //console.log(this.bus_stop);
 
   }
