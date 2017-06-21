@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { NextpagePage } from '../pages/nextpage/nextpage';
+// import { NextpagePage } from '../pages/nextpage/nextpage';
 
 @Component({
   templateUrl: 'app.html'
