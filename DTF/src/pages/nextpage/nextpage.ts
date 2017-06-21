@@ -16,7 +16,8 @@ export class NextpagePage {
   STAR_FLAG: boolean;
   
   bus_slot_no: number;
-  bus_stop_no: number;
+  board_point: string;
+  drop_point: string;
   trip_type: number;
   period_label: string;
   full_date: string;
@@ -41,6 +42,8 @@ export class NextpagePage {
       this.full_date = "Undefined date";
       this.bus_slot = "Morning: 7am";
       this.bus_stop = "Seepz";
+      this.board_point = "dsgs";
+      this.drop_point = "sfghdas";
       this.charges = 80;
       this.timing = "7:45";
       this.contact_num = "+918286204401";
@@ -151,26 +154,16 @@ export class NextpagePage {
       hrs = 9;
     }  
 
-    this.bus_stop_no = this.navParams.get('bp');
-    if(this.bus_stop_no == 1)
+    this.board_point = this.navParams.get('bp');
+    this.drop_point = this.navParams.get('dp');
+
+    if(this.board_point === "Mahape" || this.board_point === "Pune" || this.board_point === "Seepz")
     {
-      this.bus_stop = "Ghatkopar Bus Depot";
-    }  
-    else if(this.bus_stop_no == 2)
+      this.bus_stop = this.drop_point;
+    }
+    else
     {
-      this.bus_stop = "Kannamwar Nagar";
-    }  
-    else if(this.bus_stop_no == 3)
-    {
-      this.bus_stop = "Ram Nagar";
-    }  
-    else if(this.bus_stop_no == 4)
-    {
-      this.bus_stop = "Bhandup Village";
-    }  
-    else if(this.bus_stop_no == 5)
-    {
-      this.bus_stop = "Seepz Bus Station";
+      this.bus_stop = this.board_point;
     }
 
     var call = document.getElementById('call-button');

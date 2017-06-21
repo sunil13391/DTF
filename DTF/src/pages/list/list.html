@@ -19,7 +19,7 @@
   <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Location</ion-label>
-    <ion-select interface="popover" [(ngModel)]="data.location" >
+    <ion-select interface="popover" [(ngModel)]="data.location" (ionChange)="mainValidation()">
       <ion-option value="Mahape">Mahape</ion-option>
       <ion-option value="Pune">Pune</ion-option>
       <ion-option value="Seepz">Seepz</ion-option>
@@ -31,7 +31,7 @@
  <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Bus Slot</ion-label>
-    <ion-select  interface="popover" [(ngModel)]="data.bus_slot">
+    <ion-select  interface="popover" [(ngModel)]="data.bus_slot" (ionChange)="mainValidation()">
       <ion-option value="1">Morning/8:30AM</ion-option>
       <ion-option value="2">Morning/10:00AM</ion-option>
       <ion-option value="3">Evening/5:45PM</ion-option>
@@ -45,7 +45,7 @@
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Boarding Point</ion-label>
-    <ion-select  interface="popover" [(ngModel)]="data.bp">
+    <ion-select  interface="popover" [(ngModel)]="data.bp" disabled="{{POINT_FLAG}}">
       <ion-option value="1">Ghatkopar</ion-option>
       <ion-option value="2">Vikhroli</ion-option>
       <ion-option value="3">Kandivali</ion-option>
@@ -59,7 +59,7 @@
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Drop Point</ion-label>
-    <ion-select  interface="popover" [(ngModel)]="data.dp">
+    <ion-select  interface="popover" [(ngModel)]="data.dp" disabled="{{POINT_FLAG}}">
       <ion-option value="1">Mahape</ion-option>
       <!--<ion-option value="">Morning/10:00AM</ion-option>
       <ion-option value="">Evening/5:45PM</ion-option>
