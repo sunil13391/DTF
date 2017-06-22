@@ -50,11 +50,7 @@ export class HomePage {
     var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
     return names[new Date().getUTCMonth()];
   }
-  get day()
-  {
-    var day = ["Monday", "Tuesday","Wednesday","Thrusday","Friday"];
-    return day[new Date().getUTCDay()];
-  }
+  
   // get year()
   // {
   //   return new Date().getUTCFullYear();

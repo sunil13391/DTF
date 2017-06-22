@@ -163,6 +163,21 @@ export class ListPage {
     
   }
 
+  
+    isToday: boolean;
+    calendar = {
+        mode: 'month',
+        currentDate: new Date()
+    }; // these are the variable used by the calendar.
+    today() {
+        this.calendar.currentDate = new Date();
+    }
+    
+     dateSelect()
+    {  
+        this.calendar.currentDate = new Date();
+    }
+
 }
 
 interface data {
