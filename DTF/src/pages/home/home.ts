@@ -10,10 +10,14 @@ import { CallNumber } from '@ionic-native/call-number';
   templateUrl: 'home.html'
 })
 export class HomePage {
+ 
+
+
 
   BPOINT_FLAG: boolean;
   DPOINT_FLAG: boolean;
   SLOT_FLAG: boolean;
+  BSTOP_FLAG: boolean;
   
   nextpage = NextpagePage;
 
@@ -22,6 +26,9 @@ export class HomePage {
   endAreas: string[];
   bplaces: string[];
   dplaces: string[];
+  mBStops: string[];
+  bstops: string[];
+  pBStops: string[];
   contact_num: string;
   data: data;
 
@@ -43,6 +50,11 @@ export class HomePage {
     var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
     return names[new Date().getUTCMonth()];
   }
+  get day()
+  {
+    var day = ["Monday", "Tuesday","Wednesday","Thrusday","Friday"];
+    return day[new Date().getUTCDay()];
+  }
   // get year()
   // {
   //   return new Date().getUTCFullYear();
@@ -57,11 +69,14 @@ export class HomePage {
     this.BPOINT_FLAG = true;
     this.DPOINT_FLAG = true;
     this.SLOT_FLAG = true;
+    this.BSTOP_FLAG = true;
 
     this.mAreas = ['Ghatkopar', 'Vikhroli', 'Kandivali', 'Bhandup', 'Andheri'];
     this.pAreas = ['Pimpri', 'Chinchwad', 'Gauri Mata', 'Bhosari', 'Nehru Chowk'];
     this.endAreas = ['Mahape', 'Seepz', 'Pune'];
+    this.mBStops = ['Ghatkopar Bus Depot', 'Kannamvar Nagar', 'KanjurMarg Village','Bhandup Village','Godrej Company'];
     this.contact_num = "+918286204401";
+    this.pBStops = ['idk1','idk2','idk3','idk4'];
 
     this.data = {
       location: "none",
@@ -69,7 +84,8 @@ export class HomePage {
       bp: "",
       dp: "",
       date: 0,
-      trip_type: 1
+      trip_type: 1,
+      busstop:""
     }
   }
 
@@ -135,16 +151,21 @@ export class HomePage {
     {
       this.data.bp = "";
       this.data.dp = "";
+      this.data.busstop="";
       this.data.bus_slot = 0;
       if(this.data.location === "none" || this.data.bus_slot == 0)
       {
         this.BPOINT_FLAG = true;
         this.DPOINT_FLAG = true;
+        this.BSTOP_FLAG = true; 
+          
       }
       else
       {
         this.BPOINT_FLAG = false;
         this.DPOINT_FLAG = false;
+        this.BSTOP_FLAG = false;
+       
       }
     }
     else if(n==2)
@@ -160,8 +181,9 @@ export class HomePage {
           this.bplaces = this.pAreas;
         }
         this.dplaces = this.endAreas;
-        this.BPOINT_FLAG = false;
+        this.BPOINT_FLAG = false;   
         this.DPOINT_FLAG = true;
+        this.BSTOP_FLAG = true;       
         this.data.dp = this.data.location;
       }
       else if(this.data.bus_slot > 2 && this.data.bus_slot != 0)
@@ -177,17 +199,76 @@ export class HomePage {
         }
         this.BPOINT_FLAG = true;
         this.DPOINT_FLAG = false;
+        this.BSTOP_FLAG = true;
         this.data.bp = this.data.location;
       }
     }
     else if(n==3)
     {
       //this.data.bp = this.data.location;
+       if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+      {
+       if(this.data.location === "Mahape" || this.data.location === "Seepz")
+        {
+          this.bstops = this.mBStops;
+        }
+        else if(this.data.location === "Pune")
+        {
+          this.bstops = this.pBStops;
+        }
+       this.BSTOP_FLAG = false;
+      }  
+      else if(this.data.bus_slot > 2 && this.data.bus_slot != 0)
+      {
+        if(this.data.location === "Mahape" || this.data.location === "Seepz")
+        {   
+          this.bstops = this.mBStops;
+        }
+        else if(this.data.location === "Pune")
+        {
+          this.bstops = this.pBStops;
+        }
+        //  if(this.data.bp !== "")
+        // this.BSTOP_FLAG = false;
+      }
+     
     }
-    else if(n==4)
+   else if(n==4)
     {
-
+      if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+      {
+       if(this.data.location === "Mahape" || this.data.location === "Seepz")
+        {
+          this.bstops = this.mBStops;
+        }
+        else if(this.data.location === "Pune")
+        {
+          this.bstops = this.pBStops;
+        }
+      
+      }  
+      else if(this.data.bus_slot > 2 && this.data.bus_slot != 0)
+      {
+        if(this.data.location === "Mahape" || this.data.location === "Seepz")
+        {   
+          this.bstops = this.mBStops;
+        }
+        else if(this.data.location === "Pune")
+        {
+          this.bstops = this.pBStops;
+          if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+        {
+          this.BSTOP_FLAG = true;
+        }
+        }
+        if(this.data.dp !== "")
+          this.BSTOP_FLAG = false;
+      }
     }
+    // if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+    //     {
+    //       this.BSTOP_FLAG = true;
+    //     }  
     
   }
   
@@ -218,7 +299,10 @@ export class HomePage {
     {
       msg = msg + " drop-point";
     }
-
+    if(this.data.busstop === "")
+    {
+      msg = msg + " bus stop";
+    }
     if(msg === "Please choose")
     {
       this.navCtrl.push(NextpagePage, this.data);
@@ -244,4 +328,5 @@ interface data {
     dp: string;
     date: number;
     trip_type: number;
+    busstop: string;
 }
