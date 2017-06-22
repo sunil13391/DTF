@@ -19,7 +19,7 @@
   <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Location</ion-label>
-    <ion-select interface="popover" [(ngModel)]="data.location" (ionChange)="mainValidation()">
+    <ion-select interface="popover" id="loc_select" [(ngModel)]="data.location" (ionChange)="mainValidation(1)">   
       <ion-option value="Mahape">Mahape</ion-option>
       <ion-option value="Pune">Pune</ion-option>
       <ion-option value="Seepz">Seepz</ion-option>
@@ -31,7 +31,7 @@
  <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Bus Slot</ion-label>
-    <ion-select  interface="popover" [(ngModel)]="data.bus_slot" (ionChange)="mainValidation()">
+    <ion-select  interface="popover" id="slot_select" [(ngModel)]="data.bus_slot" (ionChange)="mainValidation(2)">
       <ion-option value="1">Morning/8:30AM</ion-option>
       <ion-option value="2">Morning/10:00AM</ion-option>
       <ion-option value="3">Evening/5:45PM</ion-option>
@@ -45,13 +45,8 @@
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Boarding Point</ion-label>
-    <ion-select  interface="popover" [(ngModel)]="data.bp" disabled="{{POINT_FLAG}}">
-      <ion-option value="1">Ghatkopar</ion-option>
-      <ion-option value="2">Vikhroli</ion-option>
-      <ion-option value="3">Kandivali</ion-option>
-      <ion-option value="4">Bhandup</ion-option>
-      <ion-option value="5">Andheri</ion-option>
-      <ion-option *ngFor = "let post of posts" value="{{post.id}}">{{post.title}}</ion-option>
+    <ion-select  interface="popover" id="bp_select" [(ngModel)]="data.bp" disabled="{{BPOINT_FLAG}}" (ionChange)="mainValidation(3)">
+      <ion-option *ngFor="let bplace of bplaces" value="{{bplace}}">{{bplace}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-list>
@@ -59,12 +54,8 @@
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Drop Point</ion-label>
-    <ion-select  interface="popover" [(ngModel)]="data.dp" disabled="{{POINT_FLAG}}">
-      <ion-option value="1">Mahape</ion-option>
-      <!--<ion-option value="">Morning/10:00AM</ion-option>
-      <ion-option value="">Evening/5:45PM</ion-option>
-      <ion-option value="">Evening/7:10PM</ion-option>
-      <ion-option value="">Evening/8:30PM</ion-option>-->
+    <ion-select  interface="popover" id="dp_select" [(ngModel)]="data.dp" disabled="{{DPOINT_FLAG}}" (ionChange)="mainValidation(4)">
+      <ion-option *ngFor="let dplace of dplaces" value="{{dplace}}">{{dplace}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-list>

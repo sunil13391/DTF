@@ -7,9 +7,7 @@ import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-//  providers:  [PeopleServiceProvider]
-  
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
@@ -26,9 +24,6 @@ export class HomePage {
   dplaces: string[];
   contact_num: string;
   data: data;
-  
-//  posts : Post[];
-//  posts1 : Postit[];
 
  public buttonClicked: boolean = true;
   
@@ -157,14 +152,14 @@ export class HomePage {
         {
           this.bplaces = this.pAreas;
         }
-        this.dplaces = ['Mahape', 'Seepz', 'Pune'];
+        this.dplaces = this.endAreas;
         this.BPOINT_FLAG = false;
         this.DPOINT_FLAG = true;
         this.data.dp = this.data.location;
       }
       else if(this.data.bus_slot > 2 && this.data.bus_slot != 0)
       {
-        this.bplaces = ['Mahape', 'Seepz', 'Pune'];
+        this.bplaces = this.endAreas;
         if(this.data.location === "Mahape" || this.data.location === "Seepz")
         {
           this.dplaces = this.mAreas;
@@ -243,16 +238,3 @@ interface data {
     date: number;
     trip_type: number;
 }
-
-
-  
-
-
-// interface Post{
-//   id : number;
-//   title :string;
-//   body: string;
-// }
-
-
-
