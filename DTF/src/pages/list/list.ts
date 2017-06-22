@@ -4,6 +4,7 @@ import {  NavController, NavParams , ViewController, ToastController} from 'ioni
 import { NextpagePage } from '..//nextpage/nextpage';
 
 
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -116,6 +117,11 @@ export class ListPage {
 
     }
     
+  }
+
+  selectDate()
+  {
+
   }
   
   testFn() {

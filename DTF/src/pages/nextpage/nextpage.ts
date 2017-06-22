@@ -115,7 +115,7 @@ export class NextpagePage {
     confirm.present()
   }
 
-  async callNumber():Promise<any> {
+  /* async callNumber():Promise<any> {
     try {
       await this.call.callNumber(this.contact_num, true);
     }
@@ -123,6 +123,13 @@ export class NextpagePage {
     {
       console.error(e);
     }
+  } */
+
+  callNumber()
+  {
+    //this.contact_num = encodeURIComponent(this.contact_num);
+    window.location.href="tel:"+this.contact_num;
+
   }
 
   ionViewDidLoad() {
@@ -182,9 +189,9 @@ export class NextpagePage {
     {
       this.charges = 2400;
       this.STAR_FLAG = false;
-      this.period_label = "Month";
+      this.period_label = "Month starting from";
       var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
-      this.full_date = names[new Date().getUTCMonth()] + " " + (new Date().getFullYear());
+      this.full_date = (new Date().getUTCDate()) + " " + names[new Date().getUTCMonth()] + " " + (new Date().getFullYear());
       call.classList.add("call-button-alone");
     }
 
