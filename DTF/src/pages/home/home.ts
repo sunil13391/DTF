@@ -73,7 +73,7 @@ export class HomePage {
     }
   }
 
-  async callNumber():Promise<any> {
+  /* async callNumber():Promise<any> {
     try {
       await this.call.callNumber(this.contact_num, true);
     }
@@ -81,6 +81,13 @@ export class HomePage {
     {
       console.error(e);
     }
+  } */
+
+  callNumber()
+  {
+    //this.contact_num = encodeURIComponent(this.contact_num);
+    window.location.href="tel:"+this.contact_num;
+
   }
 
   dateSelect(n)
