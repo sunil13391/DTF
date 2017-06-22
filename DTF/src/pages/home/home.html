@@ -75,6 +75,16 @@
   </ion-item>
 </ion-list>
 
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Bus Stop</ion-label>
+    <ion-select  interface="popover" id="bstop_select" [(ngModel)]="data.bstop"  disabled="{{BSTOP_FLAG}}">
+      <ion-option *ngFor="let bstop of bstops" value="{{bstop}}">{{bstop}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
 
 <div id="utilities" align="center">
     <button ion-button round icon-left id="call-button" (click)="callNumber()">
