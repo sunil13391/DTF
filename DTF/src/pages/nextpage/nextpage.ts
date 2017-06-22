@@ -38,14 +38,10 @@ export class NextpagePage {
   { 
       this.REG_FLAG = false;
       this.STAR_FLAG = false;
-<<<<<<< HEAD
       this.MONTH_FLAG = false;
-      
-=======
 
       this.period_label = "Date / Month"
       this.full_date = "Undefined date";
->>>>>>> 43427c616461ce6405bbc1481ab73143e6f88032
       this.bus_slot = "Morning: 7am";
       this.bus_stop = "Seepz";
       this.board_point = "dsgs";
