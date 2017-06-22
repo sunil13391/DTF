@@ -50,6 +50,11 @@ export class HomePage {
     var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
     return names[new Date().getUTCMonth()];
   }
+  get day()
+  {
+    var day = ["Monday", "Tuesday","Wednesday","Thrusday","Friday"];
+    return day[new Date().getUTCDay()];
+  }
   // get year()
   // {
   //   return new Date().getUTCFullYear();
@@ -79,7 +84,8 @@ export class HomePage {
       bp: "",
       dp: "",
       date: 0,
-      trip_type: 1
+      trip_type: 1,
+      busstop:""
     }
   }
 
@@ -138,17 +144,21 @@ export class HomePage {
     {
       this.data.bp = "";
       this.data.dp = "";
+      this.data.busstop="";
       this.data.bus_slot = 0;
       if(this.data.location === "none" || this.data.bus_slot == 0)
       {
         this.BPOINT_FLAG = true;
         this.DPOINT_FLAG = true;
-               
+        this.BSTOP_FLAG = true; 
+          
       }
       else
       {
         this.BPOINT_FLAG = false;
         this.DPOINT_FLAG = false;
+        this.BSTOP_FLAG = false;
+       
       }
     }
     else if(n==2)
@@ -164,9 +174,9 @@ export class HomePage {
           this.bplaces = this.pAreas;
         }
         this.dplaces = this.endAreas;
-        this.BPOINT_FLAG = false;
-        
+        this.BPOINT_FLAG = false;   
         this.DPOINT_FLAG = true;
+        this.BSTOP_FLAG = true;       
         this.data.dp = this.data.location;
       }
       else if(this.data.bus_slot > 2 && this.data.bus_slot != 0)
@@ -182,7 +192,7 @@ export class HomePage {
         }
         this.BPOINT_FLAG = true;
         this.DPOINT_FLAG = false;
-        
+        this.BSTOP_FLAG = true;
         this.data.bp = this.data.location;
       }
     }
@@ -239,11 +249,19 @@ export class HomePage {
         else if(this.data.location === "Pune")
         {
           this.bstops = this.pBStops;
+          if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+        {
+          this.BSTOP_FLAG = true;
+        }
         }
         if(this.data.dp !== "")
           this.BSTOP_FLAG = false;
       }
     }
+    // if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+    //     {
+    //       this.BSTOP_FLAG = true;
+    //     }  
     
   }
   
@@ -274,7 +292,10 @@ export class HomePage {
     {
       msg = msg + " drop-point";
     }
-
+    if(this.data.busstop === "")
+    {
+      msg = msg + " bus stop";
+    }
     if(msg === "Please choose")
     {
       this.navCtrl.push(NextpagePage, this.data);
@@ -300,4 +321,5 @@ interface data {
     dp: string;
     date: number;
     trip_type: number;
+    busstop: string;
 }
