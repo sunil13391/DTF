@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
 
 import { NextpagePage } from '..//nextpage/nextpage';
-// import {PeopleServiceProvider} from '../../providers/people-service/people-service';
+
 
 @Component({
   selector: 'page-list',
@@ -10,8 +10,17 @@ import { NextpagePage } from '..//nextpage/nextpage';
 })
 export class ListPage {
 
+  BPOINT_FLAG: boolean;
+  DPOINT_FLAG: boolean;
+  SLOT_FLAG: boolean;
+  
   nextpage = NextpagePage;
-  POINT_FLAG: boolean;
+
+  mAreas: string[];
+  pAreas: string[];
+  endAreas: string[];
+  bplaces: string[];
+  dplaces: string[];
   data: data;
 
   get dates()
@@ -21,7 +30,7 @@ export class ListPage {
   
   get month()
   {
-    var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"]
+    var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
     return names[new Date().getUTCMonth()];
   }
 
@@ -30,28 +39,83 @@ export class ListPage {
     // this.postsService.getposts().subscribe(posts => {
     //   this.posts=posts;
 
-    this.POINT_FLAG = true;
+    this.BPOINT_FLAG = true;
+    this.DPOINT_FLAG = true;
+    this.SLOT_FLAG = true;
+
+    this.mAreas = ['Ghatkopar', 'Vikhroli', 'Kandivali', 'Bhandup', 'Andheri'];
+    this.pAreas = ['Pimpri', 'Chinchwad', 'Gauri Mata', 'Bhosari', 'Nehru Chowk'];
+    this.endAreas = ['Mahape', 'Seepz', 'Pune'];
+
     this.data = {
       location: "none",
       bus_slot: 0,
-      bp: 0,
-      dp: 0,
+      bp: "",
+      dp: "",
       trip_type: 2
     }
   }
 
-  mainValidation()
+  mainValidation(n)
   {
-    this.data.bp = 0;
-    this.data.dp = 0;
-    if(this.data.location === "none" || this.data.bus_slot == 0)
+    if(n==1)
     {
-      this.POINT_FLAG = true;
+      this.data.bp = "";
+      this.data.dp = "";
+      this.data.bus_slot = 0;
+      if(this.data.location === "none" || this.data.bus_slot == 0)
+      {
+        this.BPOINT_FLAG = true;
+        this.DPOINT_FLAG = true;
+      }
+      else
+      {
+        this.BPOINT_FLAG = false;
+        this.DPOINT_FLAG = false;
+      }
     }
-    else
+    else if(n==2)
     {
-      this.POINT_FLAG = false;
+      if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
+      {
+        if(this.data.location === "Mahape" || this.data.location === "Seepz")
+        {
+          this.bplaces = this.mAreas;
+        }
+        else if(this.data.location === "Pune")
+        {
+          this.bplaces = this.pAreas;
+        }
+        this.dplaces = this.endAreas;
+        this.BPOINT_FLAG = false;
+        this.DPOINT_FLAG = true;
+        this.data.dp = this.data.location;
+      }
+      else if(this.data.bus_slot > 2 && this.data.bus_slot != 0)
+      {
+        this.bplaces = this.endAreas;
+        if(this.data.location === "Mahape" || this.data.location === "Seepz")
+        {
+          this.dplaces = this.mAreas;
+        }
+        else if(this.data.location === "Pune")
+        {
+          this.dplaces = this.pAreas;
+        }
+        this.BPOINT_FLAG = true;
+        this.DPOINT_FLAG = false;
+        this.data.bp = this.data.location;
+      }
     }
+    else if(n==3)
+    {
+      //this.data.bp = this.data.location;
+    }
+    else if(n==4)
+    {
+
+    }
+    
   }
   
   testFn() {
@@ -68,11 +132,11 @@ export class ListPage {
     {
       msg = msg + " bus-slot";
     }
-    if(this.data.bp == 0)
+    if(this.data.bp === "")
     {
       msg = msg + " boarding-point";
     }
-    if(this.data.dp == 0)
+    if(this.data.dp === "")
     {
       msg = msg + " drop-point";
     }
@@ -98,7 +162,7 @@ export class ListPage {
 interface data {
     location: string;
     bus_slot: number;
-    bp: number;
-    dp: number;
+    bp: string;
+    dp: string;
     trip_type: number;
 }
