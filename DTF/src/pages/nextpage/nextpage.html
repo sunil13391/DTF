@@ -26,7 +26,6 @@
     <div *ngIf="STAR_FLAG">
     <h5>Bus stop</h5>
     <ion-label>{{bus_stop}}</ion-label>
-    <br>
     </div>
     <h5>Charges</h5>
     <ion-label>₹{{charges}}.00</ion-label>
@@ -36,6 +35,11 @@
     <br>
   </div>
 
+  <div align="center">
+  <button ion-button color="primary" id="RegButton" class="app_buttons" block (click)="confirmBus()">Confirm</button>
+  </div>
+  <br>
+  
   <div id="utilities">
     <button ion-button round icon-left id="call-button" (click)="callNumber()">
     <ion-icon name="call"></ion-icon>Call the <br> coordinator
@@ -50,10 +54,6 @@
       <ion-icon *ngFor="let star of empty_stars" name="star-outline" class="empty-star"></ion-icon>
     </ion-card-content>
     </ion-card>
-  </div>
-
-  <div align="center">
-  <button ion-button color="primary" id="RegButton" class="app_buttons" block (click)="confirmBus()">Confirm</button>
   </div>
 
 </ion-content>
