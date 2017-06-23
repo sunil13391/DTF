@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
 
 import { NextpagePage } from '..//nextpage/nextpage';
+import { Platform } from 'ionic-angular';
 
+import { DatePicker } from '@ionic-native/date-picker';
 
 
 @Component({
@@ -35,7 +37,7 @@ export class ListPage {
     return names[new Date().getUTCMonth()];
   }
 
-   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public toastCtrl: ToastController) {
+   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public toastCtrl: ToastController, private datePicker: DatePicker, public plt: Platform) {
   
     // this.postsService.getposts().subscribe(posts => {
     //   this.posts=posts;
@@ -53,6 +55,7 @@ export class ListPage {
       bus_slot: 0,
       bp: "",
       dp: "",
+      date: "",
       trip_type: 2
     }
   }
@@ -121,7 +124,37 @@ export class ListPage {
 
   selectDate()
   {
+    var maximumDate = new Date();
+    maximumDate.setMonth(maximumDate.getMonth() + 1);
 
+    var minimumDate = this.plt.is('ios') ? new Date() : (new Date()).valueOf();
+    var maximumDate2 = this.plt.is('ios') ? maximumDate : (maximumDate).valueOf();
+    
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK,
+      minDate: minimumDate,
+      maxDate: maximumDate2
+    }).then(
+      date => {
+        let toast = this.toastCtrl.create({
+                message: 'Got date: ' + date,
+                duration: 2000,
+                position: 'middle'
+              });
+              toast.present(toast);
+              this.data.date = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+      },
+      err => {
+        let toast = this.toastCtrl.create({
+                message: 'Error: ' + err,
+                duration: 2000,
+                position: 'middle'
+              });
+              toast.present(toast);
+        }
+    );
   }
   
   testFn() {
@@ -130,6 +163,10 @@ export class ListPage {
 
   pushFn() {
     var msg = "Please choose";
+    if(this.data.date === "")
+    {
+      msg = msg + " date";
+    }
     if(this.data.location === "none")
     {
       msg = msg + " location";
@@ -163,21 +200,6 @@ export class ListPage {
     
   }
 
-  
-    isToday: boolean;
-    calendar = {
-        mode: 'month',
-        currentDate: new Date()
-    }; // these are the variable used by the calendar.
-    today() {
-        this.calendar.currentDate = new Date();
-    }
-    
-     dateSelect()
-    {  
-        this.calendar.currentDate = new Date();
-    }
-
 }
 
 interface data {
@@ -185,5 +207,6 @@ interface data {
     bus_slot: number;
     bp: string;
     dp: string;
+    date: string;
     trip_type: number;
 }

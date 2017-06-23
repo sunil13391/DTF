@@ -15,8 +15,7 @@
  <h3 style="text-align: center">Monthly Trip</h3>
 <!--<ion-icon name="bus"></ion-icon>&nbsp;-->
 
-<input  [ngModel]="startDate " (ngModelChange)="startDate = $event" type="date" name="startDate"/>
-
+<button no-lines id="date-button" (click)="selectDate()">Date<span style="float:right; text-align:right;">{{data.date}}</span><ion-icon name="md-arrow-dropdown" id="arrow-icon"></ion-icon></button>
 
   <ion-list no-lines>
   <ion-item style = "background-color:transparent">
@@ -72,10 +71,7 @@
 <!--<input  [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event" type="date" name="startDate"/>-->
 
 
-<!--<ion-col col-12 style="font-size:200%;">{{month}}</ion-col>
-<calendar  [currentDate]="calendar.currentDate"
-              step="15"  (click)="dateSelect()">
-              
-</calendar>-->
+
+
 
 </ion-content>

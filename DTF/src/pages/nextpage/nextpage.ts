@@ -25,7 +25,6 @@ export class NextpagePage {
 
   bus_slot: string;
   bus_stop: string;
-  date: number;
   charges: number;
   timing: string;
   
@@ -177,21 +176,20 @@ export class NextpagePage {
 
     var call = document.getElementById('call-button');
     this.trip_type = this.navParams.get('trip_type');
-    this.date = this.navParams.get('date');
+    var date = this.navParams.get('date');
     if(this.trip_type == 1)
     {
       this.charges = 85;
       this.STAR_FLAG = true;
       this.period_label = "Date";
-      this.full_date = this.date + "/" + ((new Date().getUTCMonth())+1) + "/" + (new Date().getFullYear());
+      this.full_date = date + "/" + ((new Date().getUTCMonth())+1) + "/" + (new Date().getFullYear());
     }
     else if(this.trip_type == 2)
     {
       this.charges = 2400;
       this.STAR_FLAG = false;
       this.period_label = "Month starting from";
-      var names = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
-      this.full_date = (new Date().getUTCDate()) + " " + names[new Date().getUTCMonth()] + " " + (new Date().getFullYear());
+      this.full_date = date;
       call.classList.add("call-button-alone");
     }
 
