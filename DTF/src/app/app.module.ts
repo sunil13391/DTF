@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { NgCalendarModule } from 'ionic2-calendar';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -22,7 +22,6 @@ import { CallNumber} from '@ionic-native/call-number';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    NgCalendarModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

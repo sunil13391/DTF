@@ -15,7 +15,8 @@
  <h3 style="text-align: center">Monthly Trip</h3>
 <!--<ion-icon name="bus"></ion-icon>&nbsp;-->
 
-<input  [ngModel]="startDate " (ngModelChange)="startDate = $event" type="date" name="startDate"/>
+<!--Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input no-lines [ngModel]="startDate " (ngModelChange)="startDate = $event" type="date" name="startDate"/>-->
 
 
   <ion-list no-lines>
@@ -36,9 +37,6 @@
     <ion-select  interface="popover" id="slot_select" [(ngModel)]="data.bus_slot" (ionChange)="mainValidation(2)">
       <ion-option value="1">Morning/8:30AM</ion-option>
       <ion-option value="2">Morning/10:00AM</ion-option>
-      <ion-option value="3">Evening/5:45PM</ion-option>
-      <ion-option value="4">Evening/7:10PM</ion-option>
-      <ion-option value="5">Evening/8:30PM</ion-option>
     </ion-select>
   </ion-item>
 </ion-list>
@@ -55,12 +53,35 @@
 
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Pickup Point</ion-label>
+    <ion-select  interface="popover" id="bstop_select" [(ngModel)]="data.busstop"  disabled="{{BSTOP_FLAG}}" (ionChange)="mainValidation(4)" >
+      <ion-option *ngFor="let bstop of bstops" value="{{bstop}}">{{bstop}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
+    <ion-label style="color: #000000">Out Time</ion-label>
+    <ion-select  interface="popover" id="slot_select" [(ngModel)]="data.out_time" disabled="{{OUTTIME_FLAG}}" (ionChange)="mainValidation(4)">
+      <ion-option value="1">5:45PM</ion-option>
+       <ion-option value="2">7:10PM</ion-option>
+      <ion-option value="3">8:30PM</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+
+<ion-list no-lines>
+  <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Drop Point</ion-label>
-    <ion-select  interface="popover" id="dp_select" [(ngModel)]="data.dp" disabled="{{DPOINT_FLAG}}" (ionChange)="mainValidation(4)">
+    <ion-select  interface="popover" id="dp_select" [(ngModel)]="data.dp" disabled="{{DPOINT_FLAG}}">
       <ion-option *ngFor="let dplace of dplaces" value="{{dplace}}">{{dplace}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-list>
+
+
 
 
   <div align="center">
