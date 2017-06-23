@@ -63,7 +63,6 @@ export class ListPage {
       bus_slot: 0,
       out_time: 0,
       bp: "",
-      dp: "",
       date: "",
       trip_type: 2,
       busstop: ""
@@ -74,10 +73,8 @@ export class ListPage {
     if(n==1)
     {
       this.data.bp = "";
-      this.data.dp = "";
        this.data.busstop="";
       this.data.bus_slot = 0;
-      this.data.out_time=0;
       if(this.data.location === "none" || this.data.bus_slot == 0)
       {
         this.BPOINT_FLAG = true;
@@ -109,7 +106,6 @@ export class ListPage {
         this.OUTTIME_FLAG = true;
         this.BSTOP_FLAG = true;
         this.data.busstop="";
-         this.data.out_time=0;
     }
     }
     else if(n==3)
@@ -126,7 +122,6 @@ export class ListPage {
           this.bstops = this.pBStops;
         }
        this.BSTOP_FLAG = false;
-        this.data.dp = this.data.bp;
       }  
     }
     else if(n==4)
@@ -205,10 +200,6 @@ export class ListPage {
     {
       msg = msg + " boarding-point";
     }
-    if(this.data.dp === "")
-    {
-      msg = msg + " drop-point";
-    }
      if(this.data.out_time == 0)
     {
       msg = msg + " Out-Time";
@@ -240,7 +231,6 @@ interface data {
     location: string;
     bus_slot: number;
     bp: string;
-    dp: string;
     date: string;
     trip_type: number;
     out_time: number;

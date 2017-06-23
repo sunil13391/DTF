@@ -202,6 +202,7 @@ export class HomePage {
     else if(n==3)
     {
       //this.data.bp = this.data.location;
+      this.data.busstop="";
        if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
       {
        if(this.data.location === "Mahape" || this.data.location === "Seepz")
@@ -231,6 +232,7 @@ export class HomePage {
     }
    else if(n==4)
     {
+      this.data.busstop="";
       if (this.data.bus_slot <= 2 && this.data.bus_slot != 0)
       {
        if(this.data.location === "Mahape" || this.data.location === "Seepz")
@@ -297,7 +299,7 @@ export class HomePage {
     }
     if(this.data.busstop === "")
     {
-      msg = msg + " bus stop";
+      msg = msg + " bus-stop";
     }
     if(msg === "Please choose")
     {

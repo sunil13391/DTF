@@ -162,18 +162,6 @@ export class NextpagePage {
       hrs = 9;
     }  
 
-    this.board_point = this.navParams.get('bp');
-    this.drop_point = this.navParams.get('dp');
-
-    if(this.board_point === "Mahape" || this.board_point === "Pune" || this.board_point === "Seepz")
-    {
-      this.bus_stop = this.drop_point;
-    }
-    else
-    {
-      this.bus_stop = this.board_point;
-    }
-
     var call = document.getElementById('call-button');
     this.trip_type = this.navParams.get('trip_type');
     var date = this.navParams.get('date');
@@ -194,6 +182,19 @@ export class NextpagePage {
     }
 
     
+    this.board_point = this.navParams.get('bp');
+    this.drop_point = this.navParams.get('dp');
+
+    var single_stop = this.navParams.get('busstop');
+
+    if(this.trip_type == 1)
+    {
+      this.bus_stop = single_stop;
+    }
+    else
+    {
+      this.bus_stop = this.board_point;
+    }
     
     //console.log(this.bus_stop);
 

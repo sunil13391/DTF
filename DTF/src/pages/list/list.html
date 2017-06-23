@@ -61,7 +61,7 @@
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Out Time</ion-label>
-    <ion-select  interface="popover" id="slot_select" [(ngModel)]="data.out_time" disabled="{{OUTTIME_FLAG}}" (ionChange)="mainValidation(4)">
+    <ion-select  interface="popover" id="slot_select" [(ngModel)]="data.out_time" (ionChange)="mainValidation(4)">
       <ion-option value="1">5:45PM</ion-option>
        <ion-option value="2">7:10PM</ion-option>
       <ion-option value="3">8:30PM</ion-option>
@@ -73,8 +73,8 @@
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Drop Point</ion-label>
-    <ion-select  interface="popover" id="dp_select" [(ngModel)]="data.dp" disabled="{{DPOINT_FLAG}}">
-      <ion-option *ngFor="let dplace of dplaces" value="{{dplace}}">{{dplace}}</ion-option>
+    <ion-select  interface="popover" [(ngModel)]="data.bp" disabled="true">
+      <ion-option *ngFor="let bplace of bplaces" value="{{bplace}}">{{bplace}}</ion-option>
     </ion-select>
   </ion-item>
 </ion-list>
@@ -91,7 +91,9 @@
 <!--<input  [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event" type="date" name="startDate"/>-->
 
 
-
+<a class="route" href="#" onclick="window.open('http://www.nraboy.com/contact', '_system', 'location=yes'); return false;">
+ <b>View Bus Routes</b>
+</a><br />
 
 
 </ion-content>
