@@ -64,16 +64,11 @@ export class ListPage {
       out_time: 0,
       bp: "",
       dp: "",
-<<<<<<< HEAD
       date: "",
-      trip_type: 2
-=======
       trip_type: 2,
-      busstop:""
->>>>>>> d424be05137f04ed2f7d72f00ddfcf537eb29859
+      busstop: ""
     }
   }
-
   mainValidation(n)
   {
     if(n==1)
@@ -159,7 +154,6 @@ export class ListPage {
 
   selectDate()
   {
-<<<<<<< HEAD
     var maximumDate = new Date();
     maximumDate.setMonth(maximumDate.getMonth() + 1);
 
@@ -191,13 +185,6 @@ export class ListPage {
               toast.present(toast);
         }
     );
-=======
-      
->>>>>>> d424be05137f04ed2f7d72f00ddfcf537eb29859
-  }
-  
-  testFn() {
-    console.log(this.data);
   }
 
   pushFn() {
@@ -246,10 +233,7 @@ export class ListPage {
     
   }
 
-<<<<<<< HEAD
-=======
   
->>>>>>> d424be05137f04ed2f7d72f00ddfcf537eb29859
 }
 
 interface data {
