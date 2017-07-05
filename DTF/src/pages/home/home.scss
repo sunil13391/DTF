@@ -1,6 +1,6 @@
 page-home{
  .back{
-     background: linear-gradient(to bottom,#40C4FF 0%,#015798 100%)
+     background: linear-gradient(to bottom,#e1eec3 0%,#4AC29A 100%);
  }
 // .image:hover {
 // -webkit-transform:scale(0.5);
@@ -38,6 +38,36 @@ page-home{
         float:right;
         width:35%;
         height: 50px;
+    }
+
+    #date-button
+    {
+        background-color:transparent;
+        color: #000000;
+        padding-left: 16px;
+        padding-right: 14px;
+        margin: 13px 8px 16px 0;
+        font-size: 1.6rem;
+        width: 100%;
+        text-align: left;
+    }
+
+    #arrow-icon
+    {
+        float: right;
+        text-align: right;
+        font-size: 2.2rem;
+        color: #999999;
+    }
+
+    .card-expand-active
+    {
+        height: 100%;
+        
+    }
+    .card-expand-inactive
+    {
+        height: 0px;
     }
 
 }

@@ -19,20 +19,21 @@
   <div id="form-display">
     <h5>{{period_label}}</h5>
     <ion-label>{{full_date}}</ion-label>
-    <br>
+    
     <h5>Bus slot</h5>
     <ion-label>{{bus_slot}}</ion-label>
-    <br>
-    <div *ngIf="STAR_FLAG">
+    
+    <!--<div *ngIf="STAR_FLAG">-->
     <h5>Bus stop</h5>
     <ion-label>{{bus_stop}}</ion-label>
-    </div>
+    <!--</div>-->
+
     <h5>Charges</h5>
     <ion-label>₹{{charges}}.00</ion-label>
-    <br>
+    
     <h5>Timing</h5>
     <ion-label>{{timing}}</ion-label>
-    <br>
+    
   </div>
 
   <div align="center">
@@ -41,7 +42,7 @@
   <br>
   
   <div id="utilities">
-    <button ion-button round icon-left id="call-button" (click)="callNumber()">
+    <button ion-button round icon-left id="callbtn" class="call-button" (click)="callNumber()">
     <ion-icon name="call"></ion-icon>Call the <br> coordinator
     </button>
 

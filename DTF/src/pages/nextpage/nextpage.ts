@@ -16,7 +16,6 @@ export class NextpagePage {
   STAR_FLAG: boolean;
   MONTH_FLAG: boolean;
   
-  bus_slot_no: number;
   board_point: string;
   drop_point: string;
   trip_type: number;
@@ -132,69 +131,86 @@ export class NextpagePage {
   }
 
   ionViewDidLoad() {
-    var hrs = 0;
-    // var mins = 0;
     
-    this.bus_slot_no = this.navParams.get('bus_slot');
-    if(this.bus_slot_no == 1)
-    {
-      this.bus_slot = "Morning/8:30AM";
-      hrs = 7;
-    }
-    else if(this.bus_slot_no == 2)
-    {
-      this.bus_slot = "Morning/10:00AM";
-      hrs = 8;
-    }
-    else if(this.bus_slot_no == 3)
-    {
-      this.bus_slot = "Evening/5:45PM";
-      hrs = 6;
-    }  
-    else if(this.bus_slot_no == 4)
-    {
-      this.bus_slot = "Evening/7:10PM";
-      hrs = 8;
-    }  
-    else if(this.bus_slot_no == 5)
-    {
-      this.bus_slot = "Evening/8:30PM";
-      hrs = 9;
-    }  
-
-    var call = document.getElementById('call-button');
     this.trip_type = this.navParams.get('trip_type');
-    var date = this.navParams.get('date');
+    this.full_date = this.navParams.get('date');
     if(this.trip_type == 1)
     {
+      this.bus_slot = this.navParams.get('bus_slot');
       this.charges = 85;
       this.STAR_FLAG = true;
       this.period_label = "Date";
-      this.full_date = date + "/" + ((new Date().getUTCMonth())+1) + "/" + (new Date().getFullYear());
     }
     else if(this.trip_type == 2)
     {
+      this.bus_slot = this.navParams.get('in_time');
       this.charges = 2400;
       this.STAR_FLAG = false;
       this.period_label = "Month starting from";
-      this.full_date = date;
-      call.classList.add("call-button-alone");
+      document.getElementById('callbtn').classList.add("call-button-alone");
+    }
+
+    var hrs = this.bus_slot;  
+    if(hrs.charAt(5) == 'A')
+    {
+      hrs = hrs.substr(0, 5);
+    }
+    else if(hrs.charAt(1) == '5')
+    {
+      hrs = "17:45";
+    }
+    else if(hrs.charAt(1) == '7')
+    {
+      hrs = "19:10";
+    }
+    else if(hrs.charAt(1) == '8')
+    {
+      hrs = "20:30";
+    }
+
+    if(this.trip_type == 1)
+    {
+      var the_date = new Date();
+      var current_date = the_date.getDate() + "/" + (the_date.getMonth()+1) + "/" + the_date.getFullYear();
+      var current_time = "";
+      if(the_date.getHours() < 10)
+      {
+        current_time = "0" + the_date.getHours() + ":";
+      }
+      else
+      {
+        current_time = the_date.getHours() + ":";
+      }
+      if(the_date.getMinutes() < 10)
+      {
+        current_time = "0" + the_date.getMinutes();
+      }
+      else
+      {
+        current_time = current_time + the_date.getMinutes();
+      }
+
+      console.log(this.full_date);
+      console.log(current_date);
+      console.log(hrs);
+      console.log(current_time);
+
+      if(this.full_date === current_date && hrs < current_time)
+      {
+        //this.REG_BUTTON_FLAG = true;
+        document.getElementById("RegButton").setAttribute("disabled","disabled");
+        console.log("disable runs");
+      }
+      else
+      {
+        console.log("enable runs");
+      }
     }
 
     
     this.board_point = this.navParams.get('bp');
     this.drop_point = this.navParams.get('dp');
-
-    var single_stop = this.navParams.get('busstop');
-
-    if(this.trip_type == 1)
-    {
-      this.bus_stop = single_stop;
-    }
-    else
-    {
-      this.bus_stop = this.board_point;
-    }
+    this.bus_stop = this.navParams.get('busstop');
     
     //console.log(this.bus_stop);
 

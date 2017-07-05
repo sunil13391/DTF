@@ -3,7 +3,7 @@ page-nextpage {
     
     
     .complete-page {
-        background: linear-gradient(to bottom, #40C4FF 0%, #015798 100%);
+        background: linear-gradient(to bottom,#e1eec3 0%,#4AC29A 100%);
     }
     
     #form-display
@@ -17,7 +17,7 @@ page-nextpage {
         margin-bottom: 20px;
     }
 
-    #call-button
+    .call-button
     {
         width: 42%;
         font-size: smaller;
@@ -27,7 +27,7 @@ page-nextpage {
         border: 1px solid lightgreen;
     }
 
-    #call-button.call-button-alone
+    #callbtn.call-button-alone
     {
         display: block;
         margin: auto;

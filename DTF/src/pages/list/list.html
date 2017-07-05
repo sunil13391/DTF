@@ -8,15 +8,19 @@
 </ion-header>
 
 
-<ion-content padding class="back"> 
-
- <!--<ion-icon name="arrow-forward"></ion-icon>-->
-<ion-icon [name]="myIcon"></ion-icon>
+<ion-content padding class="back">
  <h3 style="text-align: center">Monthly Trip</h3>
-<!--<ion-icon name="bus"></ion-icon>&nbsp;-->
 
-<button no-lines id="date-button" (click)="selectDate()">Date<span style="float:right; text-align:right;">{{data.date}}</span><ion-icon name="md-arrow-dropdown" id="arrow-icon"></ion-icon></button>
+<ion-card (click)="selectDate()">
+  <ion-card-header>
+   Date
+   <ion-icon name="md-arrow-dropdown" id="date-icon2" style="float: right;"></ion-icon>
+   <span style="float: right;">{{data.date}}</span>
+  </ion-card-header>
+</ion-card>
 
+ 
+<!--
   <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Location</ion-label>
@@ -29,6 +33,7 @@
   </ion-item>
 </ion-list>
 
+
  <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Bus Slot</ion-label>
@@ -38,8 +43,6 @@
     </ion-select>
   </ion-item>
 </ion-list>
-
-
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Boarding Point</ion-label>
@@ -48,7 +51,6 @@
     </ion-select>
   </ion-item>
 </ion-list>
-
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Pickup Point</ion-label>
@@ -57,7 +59,6 @@
     </ion-select>
   </ion-item>
 </ion-list>
-
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Out Time</ion-label>
@@ -68,8 +69,6 @@
     </ion-select>
   </ion-item>
 </ion-list>
-
-
 <ion-list no-lines>
   <ion-item style = "background-color:transparent">
     <ion-label style="color: #000000">Drop Point</ion-label>
@@ -78,8 +77,73 @@
     </ion-select>
   </ion-item>
 </ion-list>
+-->
 
 
+<ion-card (click)="toggleGroup('location')">
+  <ion-card-header>
+   Location
+   <ion-icon name="md-arrow-dropdown" id="loc-icon2" style="float: right;"></ion-icon>
+   <span style="float: right;">{{data.location}}</span>
+  </ion-card-header>
+  <ion-list id="loc-card" [ngClass]=" isGroupShown('location') ? 'card-expand-active' : 'card-expand-inactive'">
+    <button ion-item *ngFor="let loc of endAreas" (click)="setLocation(loc)">
+      {{loc}}
+    </button>
+  </ion-list>
+</ion-card>
+
+<ion-card (click)="toggleGroup('inslot')">
+  <ion-card-header>
+   Bus Slot
+   <ion-icon name="md-arrow-dropdown" id="inslot-icon2" style="float: right;"></ion-icon>
+   <span style="float: right;">{{data.in_time}}</span>
+  </ion-card-header>
+  <ion-list id="inslot-card" [ngClass]=" isGroupShown('inslot') ? 'card-expand-active' : 'card-expand-inactive'">
+    <button ion-item *ngFor="let inslot of inSlots" (click)="setInSlot(inslot)">
+      {{inslot}}
+    </button>
+  </ion-list>
+</ion-card>
+
+<ion-card (click)="toggleGroup('bp')">
+  <ion-card-header>
+   Boarding Point
+   <ion-icon name="md-arrow-dropdown" id="bp-icon2" style="float: right;"></ion-icon>
+   <span style="float: right;">{{data.bp}}</span>
+  </ion-card-header>
+  <ion-list id="bp-card" [ngClass]=" isGroupShown('bp') ? 'card-expand-active' : 'card-expand-inactive'">
+    <button ion-item *ngFor="let bplace of bplaces" (click)="setBoarding(bplace)">
+      {{bplace}}
+    </button>
+  </ion-list>
+</ion-card>
+
+<ion-card (click)="toggleGroup('bstop')">
+  <ion-card-header>
+   Bus Stop:
+   <ion-icon name="md-arrow-dropdown" id="bstop-icon2" style="float: right;"></ion-icon><br><br>
+   <span>{{data.busstop}}</span>
+  </ion-card-header>
+  <ion-list id="bstop-card" [ngClass]=" isGroupShown('bstop') ? 'card-expand-active' : 'card-expand-inactive'">
+    <button ion-item *ngFor="let bstop of bstops" (click)="setStop(bstop)">
+      {{bstop}}
+    </button>
+  </ion-list>
+</ion-card>
+
+<ion-card (click)="toggleGroup('outslot')">
+  <ion-card-header>
+   Out Time
+   <ion-icon name="md-arrow-dropdown" id="outslot-icon2" style="float: right;"></ion-icon>
+   <span style="float: right;">{{data.out_time}}</span>
+  </ion-card-header>
+  <ion-list id="outslot-card" [ngClass]=" isGroupShown('outslot') ? 'card-expand-active' : 'card-expand-inactive'">
+    <button ion-item *ngFor="let outslot of outSlots" (click)="setOutSlot(outslot)">
+      {{outslot}}
+    </button>
+  </ion-list>
+</ion-card>
 
 
   <div align="center">

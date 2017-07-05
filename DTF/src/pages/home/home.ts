@@ -1,43 +1,46 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
+import { NavController, NavParams , ViewController, ToastController} from 'ionic-angular';
 
 import { NextpagePage } from '..//nextpage/nextpage';
+import { ApiProvider } from '../../providers/api/api';
 
+import { Platform } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { DatePicker } from '@ionic-native/date-picker';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [ ApiProvider ]
 })
-export class HomePage {
- 
-
-
+export class BusRegistration {
 
   BPOINT_FLAG: boolean;
   DPOINT_FLAG: boolean;
   SLOT_FLAG: boolean;
   BSTOP_FLAG: boolean;
+  TOGGLE_FLAG: boolean;
+
+  lindex: number;
+
+  shown_group: string;
   
   nextpage = NextpagePage;
 
   mAreas: string[];
   pAreas: string[];
-  endAreas: string[];
+  endAreas: string[] = [];
+  mBStops: string[];
+  pBStops: string[];
+  timings: string[];
+
+  slots: string[];
   bplaces: string[];
   dplaces: string[];
-  mBStops: string[];
   bstops: string[];
-  pBStops: string[];
+  
   contact_num: string;
   data: data;
-
- public buttonClicked: boolean = true;
-  
-  public onButtonClick() {
-    this.buttonClicked = !this.buttonClicked;
-  }
-
 
   
   get dates()
@@ -57,7 +60,7 @@ export class HomePage {
   // }
   
 
-   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public toastCtrl: ToastController, private call: CallNumber) {
+   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public toastCtrl: ToastController, private call: CallNumber, private datePicker: DatePicker, public plt: Platform, private ApiObj: ApiProvider) {
   
     // this.postsService.getposts().subscribe(posts => {
     //   this.posts=posts;
@@ -66,23 +69,44 @@ export class HomePage {
     this.DPOINT_FLAG = true;
     this.SLOT_FLAG = true;
     this.BSTOP_FLAG = true;
+    this.TOGGLE_FLAG = true;
+
+    this.lindex = 0;
+    this.shown_group = null;
 
     this.mAreas = ['Ghatkopar', 'Vikhroli', 'Kandivali', 'Bhandup', 'Andheri'];
     this.pAreas = ['Pimpri', 'Chinchwad', 'Gauri Mata', 'Bhosari', 'Nehru Chowk'];
-    this.endAreas = ['Mahape', 'Seepz', 'Pune'];
+    //this.endAreas = ['Mahape', 'Seepz', 'Pune'];
+    this.timings = ['08:30AM', '10:00AM', '05:45PM', '07:10PM', '08:30PM'];
     this.mBStops = ['Ghatkopar Bus Depot', 'Kannamvar Nagar', 'KanjurMarg Village','Bhandup Village','Godrej Company'];
     this.contact_num = "+918286204401";
     this.pBStops = ['idk1','idk2','idk3','idk4'];
 
     this.data = {
-      location: "none",
-      bus_slot: 0,
+      location: "",
+      bus_slot: "",
       bp: "",
       dp: "",
-      date: 0,
+      date: "",
       trip_type: 1,
-      busstop:""
+      busstop: ""
     }
+
+    this.ApiObj.getLocationsFromAPI().subscribe(
+      res => {
+        //console.log(res.messegeDesc[0].locationName);
+        for(var i=0; i<res.messegeDesc.length; i++)
+        {
+          this.endAreas.push(res.messegeDesc[i].locationName);
+        }
+        /*let toast = this.toastCtrl.create({
+                message: JSON.stringify(res),
+                duration: 10000,
+                position: 'middle'
+              });
+              toast.present(toast);*/
+      }
+    )
   }
 
   /* async callNumber():Promise<any> {
@@ -102,7 +126,7 @@ export class HomePage {
 
   }
 
-  dateSelect(n)
+  /* dateSelect(n)
   {
     var date1 = document.getElementById('date1');
     var date2 = document.getElementById('date2');
@@ -138,18 +162,18 @@ export class HomePage {
       date2.style.color = "black";
     }
 
-    this.data.date = (new Date().getUTCDate()) + n - 1;
-  }
+    //this.data.date = (new Date().getUTCDate()) + n - 1;
+  } */
   
   mainValidation(n)
   {
-    if(n==1)
+    /*if(n==1)
     {
       this.data.bp = "";
       this.data.dp = "";
       this.data.busstop="";
       this.data.bus_slot = 0;
-      if(this.data.location === "none" || this.data.bus_slot == 0)
+      if(this.data.location === "" || this.data.bus_slot == 0)
       {
         this.BPOINT_FLAG = true;
         this.DPOINT_FLAG = true;
@@ -267,25 +291,181 @@ export class HomePage {
     //     {
     //       this.BSTOP_FLAG = true;
     //     }  
-    
+    */
   }
   
-  testFn() {
-    console.log("123");
-    return false;
+  testFn(xyz) {
+    console.log(xyz);
+  }
+
+  selectDate()
+  {
+    document.getElementById('date-icon').style.color = "transparent";
+
+    var maximumDate = new Date();
+    maximumDate.setMonth(maximumDate.getMonth() + 1);
+
+    var minimumDate = this.plt.is('ios') ? new Date() : (new Date()).valueOf();
+    var maximumDate2 = this.plt.is('ios') ? maximumDate : (maximumDate).valueOf();
+    
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK,
+      minDate: minimumDate,
+      maxDate: maximumDate2
+    }).then(
+      date => {
+        /*let toast = this.toastCtrl.create({
+                message: 'Got date: ' + date,
+                duration: 2000,
+                position: 'middle'
+              });
+              toast.present(toast);*/
+              this.data.date = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+      },
+      err => {
+        /*let toast = this.toastCtrl.create({
+                message: 'Error: ' + err,
+                duration: 2000,
+                position: 'middle'
+              });
+              toast.present(toast);*/
+        }
+    );
+  }
+
+  toggleGroup(group)
+  {
+    if(this.TOGGLE_FLAG)
+    {
+      if(this.isGroupShown(group))
+      {
+        this.shown_group = null;
+      }
+      else
+      {
+        this.shown_group = group;
+      }
+    }
+    else
+    {
+      this.TOGGLE_FLAG = true;
+    }
+  }
+
+  isGroupShown(group)
+  {
+    return this.shown_group === group;
+  }
+
+  setLocation(loc)
+  {
+    this.data.location = loc;
+    this.lindex = this.endAreas.indexOf(loc);
+
+    /*this.ApiObj.getTimeSlotsFromAPI(this.lindex).subscribe(
+      res => {
+        this.timings = [];
+        for(var i=0; i<res.messegeDesc.length; i++)
+        {
+          this.timings.push(res.messegeDesc[i].busTime);
+        }
+        this.slots = this.timings;
+        this.shown_group = "slot";
+        this.TOGGLE_FLAG = false;
+      }
+    )*/
+    this.slots = this.timings;
+    this.shown_group = "slot";
+    this.TOGGLE_FLAG = false;
+    
+    document.getElementById("loc-icon").style.color = "transparent";
+
+    document.getElementById("slot-icon").style.color = "black";
+    document.getElementById("bp-icon").style.color = "black";
+    document.getElementById("dp-icon").style.color = "black";
+    document.getElementById("bstop-icon").style.color = "black";
+    
+    this.data.bus_slot = "";
+    this.data.bp = "";
+    this.data.dp = "";
+    this.data.busstop = "";
+    
+    this.bplaces = null;
+    this.dplaces = null;
+    this.bstops = null;
+  }
+
+  setBusSlot(slot)
+  {
+    this.data.bus_slot = slot;
+    document.getElementById("slot-icon").style.color = "transparent";
+
+    this.data.busstop = "";
+    this.bstops = null;
+
+    if(this.data.bus_slot.charAt(5) === 'A' || this.data.bus_slot.charAt(5) === 'a')
+    {
+      this.data.bp = "";
+      this.data.dp = this.data.location;
+      this.bplaces = this.mAreas;
+      this.dplaces = null;
+      document.getElementById("bp-icon").style.color = "black";
+      document.getElementById("dp-icon").style.color = "transparent";
+      this.shown_group = "bp";
+      this.TOGGLE_FLAG = false;
+    }
+    else
+    {
+      this.data.bp = this.data.location;
+      this.data.dp = "";
+      this.bplaces = null;
+      this.dplaces = this.mAreas;
+      document.getElementById("bp-icon").style.color = "transparent";
+      document.getElementById("dp-icon").style.color = "black";
+      this.shown_group = "dp";
+      this.TOGGLE_FLAG = false;
+    }
+  }
+
+  setBoarding(bp)
+  {
+    this.data.bp = bp;
+    document.getElementById("bp-icon").style.color = "transparent";
+
+    this.bstops = this.mBStops;
+    this.shown_group = "bstop";
+    this.TOGGLE_FLAG = false;
+  }
+
+  setDrop(dp)
+  {
+    this.data.dp = dp;
+    document.getElementById("dp-icon").style.color = "transparent";
+
+    this.bstops = this.mBStops;
+    this.shown_group = "bstop";
+    this.TOGGLE_FLAG = false;
+  }
+
+  setStop(stop)
+  {
+    this.data.busstop = stop;
+    document.getElementById("bstop-icon").style.color = "transparent";
   }
 
   pushFn() {
     var msg = "Please choose";
-    if(this.data.date == 0)
+    /*if(this.data.date === "")
     {
       msg = msg + " date";
     }
-    if(this.data.location === "none")
+    if(this.data.location === "")
     {
       msg = msg + " location";
     }
-    if(this.data.bus_slot == 0)
+    if(this.data.bus_slot === "")
     {
       msg = msg + " bus-slot";
     }
@@ -300,7 +480,7 @@ export class HomePage {
     if(this.data.busstop === "")
     {
       msg = msg + " bus-stop";
-    }
+    }*/
     if(msg === "Please choose")
     {
       this.navCtrl.push(NextpagePage, this.data);
@@ -321,10 +501,10 @@ export class HomePage {
 
 interface data {
     location: string;
-    bus_slot: number;
+    bus_slot: string;
     bp: string;
     dp: string;
-    date: number;
+    date: string;
     trip_type: number;
     busstop: string;
 }

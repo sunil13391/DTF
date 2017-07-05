@@ -1,7 +1,7 @@
 page-list {
 
 .back{
-     background: linear-gradient(to bottom,#40C4FF 0%,#015798 100%)
+     background: linear-gradient(to bottom,#e1eec3 0%,#4AC29A 100%);
  }
 
  #date-button
@@ -23,4 +23,14 @@ page-list {
      font-size: 2.2rem;
      color: #999999;
  }
+
+    .card-expand-active
+    {
+        height: 100%;
+        
+    }
+    .card-expand-inactive
+    {
+        height: 0px;
+    }
 }
